@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        idx: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        idx: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
     steps:
       - name: Configure RDP
@@ -27,7 +27,7 @@ jobs:
         shell: pwsh
         run: |
           $password = "${{ secrets.RDP_PASSWORD }}"
-          if (-not $password) { $password = "admin@123" }
+          if (-not $password) { $password = "friv123" }
           $securePass = ConvertTo-SecureString $password -AsPlainText -Force
           if (-not (Get-LocalUser -Name "TOOLBOXLAP" -ErrorAction SilentlyContinue)) {
               New-LocalUser -Name "TOOLBOXLAP" -Password $securePass -AccountNeverExpires
